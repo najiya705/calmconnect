@@ -1,0 +1,23 @@
+<div class="journal-page-wrapper">
+  <div class="illustration"></div>
+
+  <div class="journal-container">
+    <h2>📝 Daily Journal</h2>
+
+    <textarea [(ngModel)]="entryText" rows="5" placeholder="Write your thoughts..."></textarea>
+
+    <button class="save-btn" (click)="saveEntry()">💾 Save Entry</button>
+
+    <div class="journal-history" *ngIf="entries.length > 0">
+      <h3>Previous Entries</h3>
+      <div class="entry-list">
+        <div class="entry-card" *ngFor="let entry of entries">
+          <div class="entry-header">
+            <span class="entry-date">{{ entry.date }}</span>
+          </div>
+          <p class="entry-text">{{ entry.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

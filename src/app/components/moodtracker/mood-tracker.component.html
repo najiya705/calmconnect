@@ -1,0 +1,26 @@
+<div class="mood-container">
+  <h2>💬 How are you feeling today?</h2>
+
+  <div class="mood-options">
+    <button
+      *ngFor="let mood of moods"
+      [class.selected]="selectedMood === mood.value"
+      (click)="selectedMood = mood.value">
+      {{ mood.label }}
+    </button>
+  </div>
+
+  <textarea [(ngModel)]="moodNote" placeholder="Want to write more? (Optional)"></textarea>
+
+  <button (click)="saveMood()">Save Mood</button>
+
+  <div class="history" *ngIf="moodHistory.length">
+    <h3>📅 Mood History</h3>
+
+    <div *ngFor="let entry of moodHistory" class="history-entry">
+      <strong>{{ entry.date }}</strong> — {{ entry.mood }}
+      <span *ngIf="entry.note"> 📝 {{ entry.note }}</span>
+    </div>
+
+  </div>
+</div>

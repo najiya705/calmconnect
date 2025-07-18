@@ -1,0 +1,30 @@
+<div class="quiz-container">
+  <h2>😟 GAD-7 Anxiety Assessment</h2>
+
+  <form *ngIf="!submitted" (ngSubmit)="submitQuiz()">
+    <div *ngFor="let question of questions; let i = index" class="question-block">
+      <p><strong>Q{{ i + 1 }}.</strong> {{ question }}</p>
+
+      <div class="options">
+        <label *ngFor="let option of options">
+          <input
+            type="radio"
+            name="question{{ i }}"
+            [value]="option.value"
+            [(ngModel)]="answers[i]"
+            required
+          />
+          {{ option.label }}
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <div *ngIf="submitted" class="result-block">
+    <h3>Your Score: {{ totalScore }}/21</h3>
+    <p class="result-msg">{{ resultMessage }}</p>
+    <button class="reset-btn" (click)="resetQuiz()">Retake Quiz</button>
+  </div>
+</div>

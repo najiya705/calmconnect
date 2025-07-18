@@ -1,0 +1,10 @@
+<div class="resources">
+  <h2>🌱 Mental Health Support in India</h2>
+
+  <div class="resource-card" *ngFor="let res of indiaResources">
+    <h3>{{ res.name }}</h3>
+    <p><strong>{{ res.type }}</strong></p>
+    <p>{{ res.description }}</p>
+    <a [href]="res.link" target="_blank" rel="noopener">Visit Website</a>
+  </div>
+</div>
